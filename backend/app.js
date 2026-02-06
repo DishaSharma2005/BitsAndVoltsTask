@@ -6,7 +6,14 @@ const userRoutes = require("./src/routes/user.routes");
 
 const app = express();
 
-app.use(cors({ origin: process.env.CLIENT_URL }));
+// ✅ CORS (single time only)
+app.use(
+  cors({
+    origin: true, // allow all origins (task deployment)
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
